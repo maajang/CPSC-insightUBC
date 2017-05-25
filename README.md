@@ -1,1 +1,1 @@
-# CPSC-insightUBC
+# CPSC 310 - insightUBC

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Explorer</title>
+
+    <link rel="stylesheet" href="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="../UI/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/main-courseExp.js"></script>
+
+
+    <script language="javascript">
+        $(document).ready(function () {
+            initializeUIElements();
+        });
+    </script>
+
+</head>
+
+
+<body>
+
+<header>
+    <h1>Course Explorer</h1>
+    <!--Navigation Bar -->
+    <ul id="navigationBar">
+        <li><a href="../../views/index.html" id="homeButton">Home</a></li>
+        <li><a class="active" href="courseExplorer.html" id="courseExplorerNav">Course Explorer</a></li>
+        <li><a href="roomsExplorer.html" id="roomsExplorerNav">Rooms Explorer</a></li>
+        <li><a href="courseScheduling.html" id="courseSchedulingNav">Course Scheduler</a></li>
+    </ul>
+</header>
+
+
+<div id="tabsOuter">
+
+    <ul id="navTabs">
+        <li><a href="#sectionTab">Search for Sections</a></li>
+        <li><a href="#courseTab">Search for Courses</a></li>
+    </ul>
+    <br><br>
+    <div id="sectionTab">
+        <form id="sectionSearchForm">
+            Department:
+            <input type="text" name="departmentField" id="S_departmentField">
+            Course Number:
+            <input type="text" name="courseNumberField" id="S_courseNumberField">
+            <br><br>
+            Course Title:
+            <input type="text" name="courseTitleField" id="S_courseTitleField">
+            Instructor:
+            <input type="text" name="instructorField" id="S_instructorField">
+            <br><br>
+            Section Size:
+            <select name="comparator" id="S_comparator">
+                <option selected="selected" value="">Select One</option>
+                <option value="GT">Greater than</option>
+                <option value="EQ">Equal to</option>
+                <option value="LT">Less than</option>
+            </select>
+            <input type="text" name="sectionSizeField" id="S_sizeField">
+            <br><br>
+            <button type="submit" id="submitSectionQuery">Find Sections</button>
+        </form>
+        <br><br>
+        <table class="display" id="sectionResults"></table>
+    </div>
+
+    <div id="courseTab">
+        <form id="courseSearchForm">
+            Department:
+            <input type="text" name="departmentField" id="C_departmentField">
+            Course Number:
+            <input type="text" name="courseNumberField" id="C_courseNumberField">
+            <br><br>
+            Course Title:
+            <input type="text" name="courseTitleField" id="C_courseTitleField">
+            <br><br>
+            Course Size:
+            <select name="comparator" id="C_comparator">
+                <option selected="selected" value="">Select One</option>
+                <option value="GT">Greater than</option>
+                <option value="EQ">Equal to</option>
+                <option value="LT">Less than</option>
+            </select>
+            <input type="text" name="courseSizeField" id="C_sizeField">
+            <br><br>
+            <button type="submit" id="submitCourseQuery">Find Courses</button>
+            <br><br>
+            <table class="display" id="courseResults"></table>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

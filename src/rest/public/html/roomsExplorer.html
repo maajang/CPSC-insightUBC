@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Rooms Explorer</title>
+
+    <link rel="stylesheet" href="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="../UI/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/main-roomsExp.js"></script>
+    <script src="../js/dialogs.js"></script>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcn_l9tSA5l2-TjAVgtdyaLjfz4k-mGwE&libraries=places"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYyO6wgoKTNOw4xemn85WDQn1OfsKTGY"></script>
+
+    <style>
+    #map {
+    height: 100%;
+    }
+    </style>
+
+    <script language="javascript">
+        $(document).ready(function () {
+
+            $("#tabsOuter").tabs();
+            $("#dialogTabs").tabs();
+
+            $("#R_comparator").selectmenu();
+            $("#R_comparator").val("");
+            $('#R_comparator').selectmenu("refresh");
+
+            $("#submitRoomQuery").button();
+            setSelectMenus();
+
+            generateBuildingRadioButtons();
+
+            $('#buildingDialog').dialog({
+                closeOnEscape: true,
+                modal: true,
+                position: 'top',
+                width: 600,
+                height: 450,
+                show: "blind",
+                hide: "explode",
+                autoOpen: false,
+            });
+        });
+    </script>
+    <script>
+        function submitDistance() {
+            console.log('button pressed');
+            var target = $('input[name=bldgOpt]:checked').val();
+            if(!target) {
+                window.alert('Please select a destination.')
+            }
+            var lat = Number(localStorage.getItem('lat'));
+            var lon = Number(localStorage.getItem('lon'));
+            var abbrev = localStorage.getItem('abbr');
+            console.log(target + abbrev + lat + lon);
+            findDistance(target, abbrev, lat, lon);
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+<header>
+    <h1>Rooms Explorer</h1>
+    <!--Navigation Bar -->
+    <ul id="navigationBar">
+        <li><a href="../../views/index.html" id="homeButton">Home</a></li>
+        <li><a href="courseExplorer.html" id="courseExplorerNav">Course Explorer</a></li>
+        <li><a class="active" href="roomsExplorer.html" id="roomsExplorerNav">Rooms Explorer</a></li>
+        <li><a href="courseScheduling.html" id="courseSchedulingNav">Course Scheduler</a></li>
+    </ul>
+</header>
+
+<div id="tabsOuter">
+    <ul id="navTabs">
+        <li><a href="#roomTab">Room Search</a></li>
+    </ul>
+    <br><br>
+    <div id="roomTab">&nbsp;
+        <form id="roomSearchForm">
+            Building Name:
+            <input type="text" name="roomNameField" id="R_buildingNameField">
+            Room Number:
+            <input type="text" name="roomNumberField" id="R_roomNumberField">
+            <br><br>
+            Rooms with capacity
+            <select name="comparator" id="R_comparator">
+                <option selected="selected" value="">Select One</option>
+                <option value="GT">Greater than</option>
+                <option value="LT">Less than</option>
+                <option value="EQ">Equal to</option>
+            </select>
+            <input type="text" name="roomSizeComaparatorField" id="R_roomSizeField">
+            <br><br>
+            Room Type:
+            <select name="roomTypeField" id="R_roomTypeField">
+                <option selected="selected" value=""></option>
+            </select>
+            <br><br>
+            Room Furniture:
+            <select name="roomFurnitureField" id="R_roomFurnitureField">
+                <option selected="selected" value=""></option>
+            </select>
+            <br><br>
+            Rooms located within
+            <input type="text" name="roomLocationField" id="R_roomLocationField">
+            metres of
+            <input type="text" name="roomLocationField1" id="R_roomLocationField1">
+            (input a building abbreviation)
+            <br><br>
+            <button type="submit" id="submitRoomQuery">Find Rooms</button>
+            <br><br>
+            <table class="display" id="roomResults"></table>
+        </form>
+    </div>
+</div>
+
+
+<!--
+add title
+add google maps link/coords
+add url
+-->
+
+<div id="buildingDialog">
+    <div id="abbr"></div>
+    <div id="lat"></div>
+    <div id="lon"></div>
+    <div id="dialogTabs">
+        <ul id="dialogTabsList">
+            <li><a href="#mapTab">Map</a></li>
+            <li><a href="#distanceTab">Find Distances</a></li>
+        </ul>
+
+        <div id="mapTab">
+            <p id="buildingAddress"></p>
+            <iframe id="mapFrame"
+                    width="400"
+                    height="250"
+                    frameborder="0"
+                    style="border:0">
+            </iframe>
+        </div>
+        <div id="distanceTab">
+            <table>
+                <td>
+            <p id="description"></p>
+                </td>
+                <td>
+                    <button type="button" onclick="submitDistance()" id="submitDistanceQuery">Go</button>
+                </td>
+                </table>
+            <div id="buildingOptions" style="overflow: auto; height: 100px">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<img id="buildingImage" style="width:400px;height:250px;">
+
+
+
+</body>

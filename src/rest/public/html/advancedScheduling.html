@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Scheduling</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="../UI/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+    <script src="../js/main-courseSched.js"></script>
+    <script src="../js/scheduleGenerator.js"></script>
+
+
+    <script>
+        $("#submitGroup").button();
+    </script>
+
+
+</head>
+<body>
+<header>
+    <h1>Course Scheduling</h1>
+    <!--Navigation Bar -->
+    <ul id="navigationBar">
+        <li><a href="../../views/index.html" id="homeButton">Home</a></li>
+        <li><a href="courseExplorer.html" id="courseExplorerNav">Course Explorer</a></li>
+        <li><a href="roomsExplorer.html" id="roomsExplorerNav">Rooms Explorer</a></li>
+        <li><a href="courseScheduling.html" id="courseSchedulingNav">Course Scheduler</a></li>
+        <li><a class="active" href="advancedScheduling.html" id="advancedScheduling">Advanced Scheduling</a></li>
+    </ul>
+</header>
+
+<p>No more sprinting across campus! This feature creates a location-optimized schedule based on user-inputted groups of
+    courses. Example: CPSC 121 and CPSC 210 are often taken during the same term. If their sections are scheduled
+    consecutively they will be scheduled in locations that are less than 8 minutes walk from each other in order to
+    enable students to get from one class to the other during the 10 minute break between classes.</p>
+
+<table id="groupAdderTable">
+    <tr>
+        <td>
+            Group Name: <input type="text" id="groupName">
+            <br>
+            ex. 1st Year CompSci
+            <br><br>
+            Courses to include in this group:
+            <div id="courseIDInput" class="scrollableBoxes"></div>
+        </td>
+        <td>
+            <button type="submit" id="submitGroup">Add Group</button>
+        </td>
+        <td>
+            Groups added so far (you may add multiple groups):
+            <ul></ul>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

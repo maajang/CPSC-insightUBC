@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Results</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css
+         " rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script src="../js/renderSchedule.js"></script>
+    <script src="../js/main-courseSched.js"></script>
+    <script src="../js/scheduleGenerator.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#dayTabs").tabs();
+            $("#MWFTab").tabs();
+            $("#TThTab").tabs();
+
+            renderSchedule();
+        });
+    </script>
+
+</head>
+<body>
+
+<div id="schedule">
+    <h1>Schedule</h1>
+    <div id="dayTabs">
+
+        <ul>
+            <li><a href="#MWFTab">Monday-Wednesday-Friday</a></li>
+            <li><a href="#TThTab">Tuesday-Thursday</a></li>
+            <li><a href="#ErrorsTab">Scheduling Errors</a></li>
+            <li><a href="#QualityTab">Schedule Quality</a></li>
+        </ul>
+
+        <div id="MWFTab">
+            <ul id="MWFblockTabs">
+                <li><a href="#b1">8-9am</a></li>
+                <li><a href="#b2">9-10am</a></li>
+                <li><a href="#b3">10-11am</a></li>
+                <li><a href="#b4">11am-12pm</a></li>
+                <li><a href="#b5">12-1pm</a></li>
+                <li><a href="#b6">1-2pm</a></li>
+                <li><a href="#b7">2-3pm</a></li>
+                <li><a href="#b8">3-4pm</a></li>
+                <li><a href="#b9">4-5pm</a></li>
+            </ul>
+
+            <div id="b1" class="blockTab"></div>
+            <div id="b2" class="blockTab"></div>
+            <div id="b3" class="blockTab"></div>
+            <div id="b4" class="blockTab"></div>
+            <div id="b5" class="blockTab"></div>
+            <div id="b6" class="blockTab"></div>
+            <div id="b7" class="blockTab"></div>
+            <div id="b8" class="blockTab"></div>
+            <div id="b9" class="blockTab"></div>
+
+        </div>
+
+        <div id="TThTab">
+            <ul id="TThblockTabs">
+                <li><a href="#b10">8-9:30am</a></li>
+                <li><a href="#b11">9:30-11am</a></li>
+                <li><a href="#b12">11-12:30pm</a></li>
+                <li><a href="#b13">12:30-2pm</a></li>
+                <li><a href="#b14">2-3:30pm</a></li>
+                <li><a href="#b15">3:30-5pm</a></li>
+            </ul>
+
+            <div id="b10" class="blockTab"></div>
+            <div id="b11" class="blockTab"></div>
+            <div id="b12" class="blockTab"></div>
+            <div id="b13" class="blockTab"></div>
+            <div id="b14" class="blockTab"></div>
+            <div id="b15" class="blockTab"></div>
+
+        </div>
+
+        <div id="ErrorsTab">
+            <table id="errorTabElement" >
+                <br><br>
+                <tr>
+                    <th style="color: crimson">The given buildings contain no rooms large enough for the following courses:</th>
+                    <th></th>
+                    <th style="color: crimson;;">No space remains between 8am and 5pm in the given buildings to schedule the following courses :</th>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top">
+                    <ul id="noSpaceList"></ul>
+                    </td>
+                    <td></td>
+                    <td style="vertical-align: top">
+                        <ul id="noTimeList"></ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+<br><br>
+        <div id="QualityTab">
+            <h3 style="color: green">Scheduled successfully:</h3>
+            <p id="successesResult"></p>
+            <br>
+            <h3 style="color: orange;">Require scheduling after 5pm or require more building space:</h3>
+            <p id="noTimeResult"></p>
+            <br>
+            <h3 style="color: crimson;">Require scheduling in a building with rooms of greater capacity:</h3>
+            <p id="noSpaceResult"></p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

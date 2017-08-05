@@ -1,0 +1,97 @@
+
+
+.error {
+    color: red;
+}
+
+h1, p, th, td, li {
+    font-family: "Verdana";
+}
+
+
+#navigationBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #402456;
+}
+
+#navigationBar li {
+    float: left;
+}
+
+#navigationBar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navigationBar li a:hover:not(.active) {
+    background-color: #f27734;
+}
+
+#navigationBar .active {
+    background-color: #ffb51d;
+}
+
+.resultsTable {
+    width: 80%;
+    border-collapse: collapse;
+    border-style: none;
+}
+
+.resultsTable th, td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.radioUserInputs {
+    height:200px;
+}
+
+.radioUserInputs table, th, td{
+    border: none;
+}
+
+.scrollableBoxes {
+    width: 100%;
+    overflow: auto;
+    height: 200px;
+}
+
+td.cap {
+    text-transform: capitalize;
+}
+
+#radioUserInputs th, td {
+    /*background-color: gold;*/
+}
+
+
+#ErrorsTab li a {
+    color: crimson;
+}
+
+#errorTabElement {
+    width: 90%;
+}
+
+#errorTabElement th, td {
+    padding: 5px;
+}
+
+.blockTab {
+    background-color: lightcyan;
+}
+
+.buildingNameLink {
+    text-underline: auto;
+}
+
+.buildingNameLink:hover {
+    color: gold;
+}
+

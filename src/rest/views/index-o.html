@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/d3.min.js"></script>
+    <script src="../public/js/main.js"></script>
+</head>
+<html>
+<body>
+<div id="dataset">
+    <div class="form-group">
+        <h3>Dataset</h3>
+        <label for="datasetId">ID:</label>
+        <input type="text" class="form-control" id="datasetId">
+        <label for="datasetZip">Archive:</label>
+        <input type="file" class="form-control" id="datasetZip">
+    </div>
+    <button type="button" class="btn btn-primary" id="datasetAdd">Add Dataset</button>
+    <button type="button" class="btn btn-primary" id="datasetRm">Remove Dataset</button>
+</div>
+<div id="container">
+    <h3>Query</h3>
+    <form id="queryForm">
+        <div class="form-group">
+            <label for="query">Query:</label>
+            <textarea class="form-control" rows="10" id="query"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div id="render">
+    <h3>Result</h3>
+</div>
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

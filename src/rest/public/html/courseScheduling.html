@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Scheduling</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="../UI/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="../UI/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+
+    <script src="../js/scheduleGenerator.js"></script>
+    <script src="../js/main-courseSched.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            setDepartmentsAndCourses();
+            setBuildings();
+
+            $("#submitSchedulingQuery").button();
+        });
+    </script>
+
+
+    <script>
+        function submitSched () {
+            console.log('submit scheduleForm');
+
+            var depts = getCheckedValues('departments');
+            var ids = getCheckedValues('ids');
+            var bldgs = getCheckedValues('buildings');
+            var dist = $('#distanceField').val();
+            var target = $('#targetField').val();
+
+            createSchedule(depts, ids, bldgs, dist, target);
+        }
+    </script>
+
+</head>
+<body>
+
+<header>
+    <h1>Course Scheduling</h1>
+    <!--Navigation Bar -->
+    <ul id="navigationBar">
+        <li><a href="../../views/index.html" id="homeButton">Home</a></li>
+        <li><a href="courseExplorer.html" id="courseExplorerNav">Course Explorer</a></li>
+        <li><a href="roomsExplorer.html" id="roomsExplorerNav">Rooms Explorer</a></li>
+        <li><a class="active" href="courseScheduling.html" id="courseSchedulingNav">Course Scheduler</a></li>
+    </ul>
+</header>
+<br><br>
+<form id="scheduleForm">
+    <table class="radioUserInputs">
+        <tr>
+            <td>
+                <div id="deptInput" class="scrollableBoxes"></div>
+            </td>
+            <td>
+                <div id="courseIDInput" class="scrollableBoxes"></div>
+            </td>
+            <td>
+                <div id="roomsInput" class="scrollableBoxes">
+                </div>
+            </td>
+            <td>
+                <b>AND/OR</b>
+            </td>
+            <td align=""> Schedule in buildings
+                <br> within <input type="text" id="distanceField"> metres of
+                <br> <input type="text" id="targetField"> (input a building abbreviation)
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <button type="button" onclick="submitSched()" id="submitSchedulingQuery">Generate Schedule</button>
+</form>
+
+<div id="courseResults" style="visibility: visible"></div>
+
+</body>
+</html>
